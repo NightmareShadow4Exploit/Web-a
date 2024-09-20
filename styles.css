@@ -1,29 +1,50 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
 }
 
-.tabs {
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+main {
     display: flex;
-    margin-bottom: 20px;
 }
 
-.tab-button {
-    padding: 10px 20px;
-    margin-right: 10px;
-    cursor: pointer;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.tab-button:hover {
-    background-color: #e0e0e0;
-}
-
-.tab-content {
-    border: 1px solid #ccc;
+nav {
+    width: 200px;
+    background-color: #f4f4f4;
     padding: 20px;
-    border-radius: 5px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin-bottom: 10px;
+}
+
+nav ul ul {
+    padding-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+#fileContent {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+#fileDisplay {
+    border: 1px solid #ccc;
+    padding: 10px;
 }

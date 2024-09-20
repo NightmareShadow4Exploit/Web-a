@@ -3,25 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Library</title>
+    <title>File Manager</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
 </head>
 <body>
-    <div class="tabs">
-        <button class="tab-button" onclick="showTab('Attendance')">Attendance</button>
-        <button class="tab-button" onclick="showTab('MinutesOfMeeting')">Minutes of Meeting</button>
-        <button class="tab-button" onclick="showTab('CheckList')">Check List</button>
-        <button class="tab-button" onclick="showTab('PlanningAndAchievement')">Planning & Achievement</button>
-        <button class="tab-button" onclick="showTab('Reports')">Reports</button>
-        <button class="tab-button" onclick="showTab('Books')">Books</button>
-        <button class="tab-button" onclick="showTab('Articles')">Articles</button>
-        <button class="tab-button" onclick="showTab('SelfAssessment')">Self Assessment</button>
-    </div>
+    <header>
+        <h1>File Manager</h1>
+    </header>
 
-    <div id="content" class="tab-content">
-        <h2>Welcome! Select a tab to view content.</h2>
-    </div>
+    <main>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="fetchFilesFromGitHub('Attendance')">Attendance</a></li>
+                <li><a href="#" onclick="fetchFilesFromGitHub('MinutesOfMeeting')">Minutes of Meeting</a></li>
+                <li>Check List
+                    <ul>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('CheckList/Weekly')">Weekly</a></li>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('CheckList/Monthly')">Monthly</a></li>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('CheckList/Quarterly')">Quarterly</a></li>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('CheckList/HalfYearly')">Half Yearly</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="fetchFilesFromGitHub('PlanningAchievement')">Planning & Achievement</a></li>
+                <li>Report
+                    <ul>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('Report/SensusReport')">Sensus Report</a></li>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('Report/StudentReport')">Student Report</a></li>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('Report/ClassReport')">Class Report</a></li>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('Report/IrregularStudentReport')">Irregular Student Report</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="fetchFilesFromGitHub('Books')">Books</a></li>
+                <li><a href="#" onclick="fetchFilesFromGitHub('Articles')">Articles</a></li>
+                <li><a href="#" onclick="fetchFilesFromGitHub('SelfAssessment')">Self Assessment</a></li>
+            </ul>
+        </nav>
+
+        <section id="fileContent">
+            <h2>File Preview</h2>
+            <div id="fileDisplay"></div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
