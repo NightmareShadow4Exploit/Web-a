@@ -1,3 +1,6 @@
+const repoOwner = 'NightmareShadow4Exploit'; // Your GitHub username
+const repoName = 'web-a'; // Your repository name
+
 function showTab(tabName) {
     const contentDiv = document.getElementById("content");
     let content = "";
@@ -9,8 +12,7 @@ function showTab(tabName) {
                        <div id="pdfContent"></div>
                        <ul id="excelList"></ul>
                        <div id="excelContent"></div>`;
-            fetchPdfFiles();  // Call to fetch PDF files
-            fetchExcelFiles(); // Call to fetch Excel files
+            fetchFiles('Attendance', fetchPdfFiles, fetchExcelFiles);
             break;
         case 'MinutesOfMeeting':
             content = "<h2>Minutes of Meeting</h2><p>Content for Minutes of Meeting goes here.</p>";
@@ -40,38 +42,41 @@ function showTab(tabName) {
     contentDiv.innerHTML = content;
 }
 
-function fetchPdfFiles() {
-    const pdfFiles = [
-        // Replace these with the actual paths to your PDF files
-        "https://raw.githubusercontent.com/NightmareShadow4Exploit/web-a/main/path/to/your/file1.pdf",
-        "https://raw.githubusercontent.com/NightmareShadow4Exploit/web-a/main/path/to/your/file2.pdf"
-    ];
+function fetchFiles(directory, pdfCallback, excelCallback) {
+    const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${directory}`;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(file => {
+                const filePath = file.download_url;
+                const fileName = file.name;
 
+                if (fileName.endsWith('.pdf')) {
+                    pdfCallback(filePath);
+                } else if (fileName.endsWith('.xlsx') || fileName.endsWith('.xls')) {
+                    excelCallback(filePath);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching files:', error));
+}
+
+function fetchPdfFiles(filePath) {
     const pdfList = document.getElementById("pdfList");
-    pdfFiles.forEach(file => {
-        const li = document.createElement("li");
-        li.innerHTML = `<a href="#" onclick="viewPdf('${file}')">${file.split('/').pop()}</a>`;
-        pdfList.appendChild(li);
-    });
+    const li = document.createElement("li");
+    li.innerHTML = `<a href="#" onclick="viewPdf('${filePath}')">${filePath.split('/').pop()}</a>`;
+    pdfList.appendChild(li);
 }
 
 function viewPdf(url) {
     document.getElementById('pdfContent').innerHTML = `<iframe src="${url}" width="100%" height="500px"></iframe>`;
 }
 
-function fetchExcelFiles() {
-    const excelFiles = [
-        // Replace these with the actual paths to your Excel files
-        "https://raw.githubusercontent.com/NightmareShadow4Exploit/web-a/main/path/to/your/file1.xlsx",
-        "https://raw.githubusercontent.com/NightmareShadow4Exploit/web-a/main/path/to/your/file2.xlsx"
-    ];
-
+function fetchExcelFiles(filePath) {
     const excelList = document.getElementById("excelList");
-    excelFiles.forEach(file => {
-        const li = document.createElement("li");
-        li.innerHTML = `<a href="#" onclick="viewExcel('${file}')">${file.split('/').pop()}</a>`;
-        excelList.appendChild(li);
-    });
+    const li = document.createElement("li");
+    li.innerHTML = `<a href="#" onclick="viewExcel('${filePath}')">${filePath.split('/').pop()}</a>`;
+    excelList.appendChild(li);
 }
 
 function viewExcel(url) {
