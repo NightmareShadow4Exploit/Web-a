@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Check if the user is logged in
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+            // If not logged in, redirect to the login page
+            window.location.href = 'index.html';
+        }
+    </script>
+    <script>
+        checkLoginStatus(); // Check if the user is logged in
+    </script>
+    
+</head>
+<body>
+    <header>
+        <h1>File Manager</h1>
+    </header>
+    <!-- <button onclick="logout()">Logout</button> -->
+
+
+    <main>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="fetchFilesFromGitHub('Attendance')">Attendance</a></li>
+                <li><a href="#" onclick="fetchFilesFromGitHub('MinutesOfMeeting')">Minutes of Meeting</a></li>
+                <li>Check List
+                    <ul>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('CheckList/Weekly')">Weekly</a></li>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('CheckList/Monthly')">Monthly</a></li>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('CheckList/Quarterly')">Quarterly</a></li>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('CheckList/HalfYearly')">Half Yearly</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="fetchFilesFromGitHub('PlanningAchievement')">Planning & Achievement</a></li>
+                <li>Report
+                    <ul>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('Report/SensusReport')">Sensus Report</a></li>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('Report/StudentReport')">Student Report</a></li>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('Report/ClassReport')">Class Report</a></li>
+                        <li><a href="#" onclick="fetchFilesFromGitHub('Report/IrregularStudentReport')">Irregular Student Report</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" onclick="fetchFilesFromGitHub('Books')">Books</a></li>
+                <li><a href="#" onclick="fetchFilesFromGitHub('Articles')">Articles</a></li>
+                <li><a href="#" onclick="fetchFilesFromGitHub('SelfAssessment')">Self Assessment</a></li>
+            </ul>
+        </nav>
+
+        <section id="fileContent">
+            <h2>File Preview</h2>
+            <div id="fileDisplay"></div>
+        </section>
+    </main>
+    <script>
+        // Logout function to clear login session
+        function logout() {
+            localStorage.removeItem('isLoggedIn'); // Clear login flag
+            window.location.href = 'index.html';   // Redirect to login page
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

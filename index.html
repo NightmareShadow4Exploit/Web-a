@@ -3,48 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Manager</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Login Page</title>
+    <style>
+        /* Insert the revised CSS here */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+            color: #00796b;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 5%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #00796b;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #004d40;
+            outline: none;
+        }
+
+        button {
+            width: 111%;
+            padding: 10px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        #error-message {
+            margin-top: 10px;
+            color: red;
+            text-align: center;
+        }
+    </style>
+    <script src="script.js"></script>
 </head>
 <body>
-    <header>
-        <h1>File Manager</h1>
-    </header>
+    <div class="container">
+        <h1>Login</h1>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username">
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password">
+        </div>
+        <button onclick="login()">Login</button>
+        <p id="error-message"></p>
+    </div>
 
-    <main>
-        <nav>
-            <ul>
-                <li><a href="#" onclick="fetchFilesFromGitHub('Attendance')">Attendance</a></li>
-                <li><a href="#" onclick="fetchFilesFromGitHub('MinutesOfMeeting')">Minutes of Meeting</a></li>
-                <li>Check List
-                    <ul>
-                        <li><a href="#" onclick="fetchFilesFromGitHub('CheckList/Weekly')">Weekly</a></li>
-                        <li><a href="#" onclick="fetchFilesFromGitHub('CheckList/Monthly')">Monthly</a></li>
-                        <li><a href="#" onclick="fetchFilesFromGitHub('CheckList/Quarterly')">Quarterly</a></li>
-                        <li><a href="#" onclick="fetchFilesFromGitHub('CheckList/HalfYearly')">Half Yearly</a></li>
-                    </ul>
-                </li>
-                <li><a href="#" onclick="fetchFilesFromGitHub('PlanningAchievement')">Planning & Achievement</a></li>
-                <li>Report
-                    <ul>
-                        <li><a href="#" onclick="fetchFilesFromGitHub('Report/SensusReport')">Sensus Report</a></li>
-                        <li><a href="#" onclick="fetchFilesFromGitHub('Report/StudentReport')">Student Report</a></li>
-                        <li><a href="#" onclick="fetchFilesFromGitHub('Report/ClassReport')">Class Report</a></li>
-                        <li><a href="#" onclick="fetchFilesFromGitHub('Report/IrregularStudentReport')">Irregular Student Report</a></li>
-                    </ul>
-                </li>
-                <li><a href="#" onclick="fetchFilesFromGitHub('Books')">Books</a></li>
-                <li><a href="#" onclick="fetchFilesFromGitHub('Articles')">Articles</a></li>
-                <li><a href="#" onclick="fetchFilesFromGitHub('SelfAssessment')">Self Assessment</a></li>
-            </ul>
-        </nav>
+    <script>
+        // Example of fetching files from a folder on page load
+        console.log(encrypt("seccomm110")); // Should match kVSSebbggf
+        console.log(encrypt("Sec.Comm110")); // Should match ;VSc#ebbggf
 
-        <section id="fileContent">
-            <h2>File Preview</h2>
-            <div id="fileDisplay"></div>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+        fetchFilesFromGitHub('Attendance'); // Example folder name
+    </script>
 </body>
 </html>

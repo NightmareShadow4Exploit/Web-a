@@ -1,24 +1,30 @@
+/* Base styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f0f2f5;
 }
 
 header {
-    background-color: #333;
+    background-color: #4a4a4a;
     color: white;
     text-align: center;
-    padding: 1em 0;
+    padding: 1.5em 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 main {
     display: flex;
+    height: calc(100vh - 100px);
 }
 
 nav {
-    width: 200px;
-    background-color: #f4f4f4;
+    width: 250px;
+    background-color: #ffffff;
     padding: 20px;
+    border-right: 1px solid #ccc;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
@@ -28,23 +34,88 @@ nav ul {
 
 nav ul li {
     margin-bottom: 10px;
+    position: relative;
 }
 
-nav ul ul {
-    padding-left: 20px;
+nav ul li:hover {
+    background-color: #e9ecef; /* Light background on hover */
+    border-radius: 4px; /* Rounded corners */
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #333;
+    color: #4a4a4a;
+    padding: 10px 15px; /* Increased padding */
+    border-radius: 4px;
+    display: block; /* Block display for full clickable area */
+    transition: background-color 0.3s, color 0.3s;
 }
 
+nav ul li a:hover {
+    background-color: #007bff; /* Change background on hover */
+    color: white; /* Change text color on hover */
+}
+
+/* Underline effect */
+nav ul li a::after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 0;
+    background: white;
+    transition: width 0.3s;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover::after {
+    width: 100%; /* Expands underline on hover */
+}
+
+/* File content styles */
 #fileContent {
     flex-grow: 1;
     padding: 20px;
+    background-color: #ffffff;
+    overflow-y: auto;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
+    border-radius: 5px; /* Rounded corners for the content area */
+}
+
+#fileContent h2 {
+    margin-top: 0; /* Remove top margin */
+    color: #333; /* Darker color for better readability */
+}
+
+#fileContent li a {
+    text-decoration: none;
+    color: #dc3545;
 }
 
 #fileDisplay {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-height: 400px; /* Limit height */
+    overflow-y: auto; /* Scroll if content is too tall */
+}
+
+/* Button styles */
+button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #c82333; /* Darker shade on hover */
 }
