@@ -1,5 +1,5 @@
 // Replace 'your_new_token_here' with your actual GitHub token. Keep it private.
-// const token = ''// IMPORTANT: Store this securely and never expose it publicly
+const token = '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'// IMPORTANT: Store this securely and never expose it publicly
 
 function fetchFilesFromGitHub(folder) {
     const repoOwner = 'NightmareShadow4Exploit'; // Your GitHub username
