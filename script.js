@@ -1,8 +1,11 @@
 function fetchFilesFromGitHub(folder) {
     const repoOwner = 'NightmareShadow4Exploit'; // Your GitHub username
     const repoName = 'web-a'; // Your repo name
-    const apiURL = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folder}`;
-    
+
+    // URL encode folder names to handle spaces and special characters
+    const encodedFolder = encodeURIComponent(folder);
+    const apiURL = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${encodedFolder}`;
+
     const fileDisplay = document.getElementById("fileDisplay");
     fileDisplay.innerHTML = `<p>Fetching files from <strong>${folder}</strong>...</p>`;
 
